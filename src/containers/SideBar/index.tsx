@@ -1,7 +1,3 @@
 export default function SideBar() {
-  return (
-    <aside className="w-10 bg-red-200">
-
-    </aside>
-  )
+  return <aside className="h-screen w-1/4 bg-slate-800">sidebar</aside>;
 }

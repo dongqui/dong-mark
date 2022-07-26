@@ -8,13 +8,11 @@ const nextConfig = {
     const { dev, isServer } = options;
 
     if (dev && isServer) {
-      config.plugins.push(
-        new ForkTsCheckerWebpackPlugin(),
-      );
+      config.plugins.push(new ForkTsCheckerWebpackPlugin());
     }
 
     return config;
-  }
-}
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

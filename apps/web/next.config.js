@@ -1,9 +1,12 @@
+const withPlugins = require('next-compose-plugins');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const withTM = require('next-transpile-modules')(['ui'])
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = withPlugins([withTM], {
   reactStrictMode: true,
   swcMinify: true,
+
   webpack(config, options) {
     const { dev, isServer } = options;
 
@@ -13,6 +16,5 @@ const nextConfig = {
 
     return config;
   },
-};
+});
 
-module.exports = nextConfig;

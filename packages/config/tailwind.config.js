@@ -1,10 +1,7 @@
 module.exports = {
-  content: [
-    '../../packages/ui/components/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}'
-  ],
+  content: ['../../packages/ui/components/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
   theme: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
-}
+  plugins: [],
+};

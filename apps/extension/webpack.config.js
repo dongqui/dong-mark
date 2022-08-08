@@ -8,7 +8,8 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: {
-    popup: './src/popup/index.tsx',
+    popup: path.resolve('./src/popup/index.tsx'),
+    contentScript: path.resolve('./src/popup/index.ts'),
   },
   module: {
     rules: [

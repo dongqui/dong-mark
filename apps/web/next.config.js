@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const withTM = require('next-transpile-modules')(['ui'])
+const withTM = require('next-transpile-modules')(['ui']);
 
 /** @type {import('next').NextConfig} */
 module.exports = withPlugins([withTM], {
@@ -17,4 +17,3 @@ module.exports = withPlugins([withTM], {
     return config;
   },
 });
-

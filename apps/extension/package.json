@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack"
+    "dev": "webpack --watch"
   },
   "dependencies": {
     "next": "12.2.2",

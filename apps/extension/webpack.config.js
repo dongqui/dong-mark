@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   entry: {
     popup: path.resolve('./src/popup/index.tsx'),
-    contentScript: path.resolve('./src/popup/index.ts'),
+    contentScript: path.resolve('./src/contentScript/index.ts'),
   },
   module: {
     rules: [

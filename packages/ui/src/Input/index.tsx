@@ -1,9 +1,25 @@
-import React from 'react';
+import { useRef, ReactNode } from 'react';
 
-function Input() {
+import { widthClass } from 'dynamicClasses';
+interface Props {
+  prefix?: ReactNode;
+  postfix?: ReactNode;
+  placeHolder?: string;
+  onChange?: React.ChangeEventHandler;
+  width?: string | number;
+}
+
+function Input({ prefix, postfix, placeHolder, onChange, width }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  function handleClickWrapper() {
+    inputRef?.current?.focus();
+  }
   return (
-    <div>
-      <input></input>
+    <div className={`flex items-center gap-2 rounded-lg border-2 bg-gray-600 p-2 text-slate-100 ${widthClass(width)}`} onClick={handleClickWrapper}>
+      {prefix}
+      <input className="w-full border-none bg-transparent" ref={inputRef} placeholder={placeHolder} onChange={onChange} />
+      {postfix}
     </div>
   );
 }

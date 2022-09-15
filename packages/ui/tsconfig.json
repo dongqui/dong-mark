@@ -2,7 +2,10 @@
   "extends": "tsconfig/react.json",
   "include": ["."],
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "./src",
+    "declaration": true,
+    "declarationDir": "dist",
+    "sourceMap": true,
   },
   "exclude": ["dist", "build", "node_modules"]
 }

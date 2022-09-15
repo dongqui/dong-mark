@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import { SideBar } from 'containers';
 import { SearchBar } from 'components';
+import { Input } from 'ui';
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <SideBar />
         <div className="m-4">
           <SearchBar />
+          <Input />
         </div>
       </main>
     </>

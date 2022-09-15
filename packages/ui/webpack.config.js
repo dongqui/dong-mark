@@ -6,7 +6,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
-  entry: './src/index.tsx',
+  entry: './src/index.ts',
   module: {
     rules: [
       {

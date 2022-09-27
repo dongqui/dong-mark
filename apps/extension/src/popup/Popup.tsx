@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { Input } from 'ui';
+
 import './style.scss';
 
 function Popup() {
@@ -19,6 +21,8 @@ function Popup() {
     <div>
       <h1 className="text-green-500">hello</h1>
       <p>{res}</p>
+      <Input />
+      hi
     </div>
   );
 }

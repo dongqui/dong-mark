@@ -1,6 +1,5 @@
 import { useRef, ReactNode } from 'react';
 
-import { widthClass } from 'dynamicClasses';
 interface Props {
   prefix?: ReactNode;
   postfix?: ReactNode;
@@ -16,9 +15,9 @@ function Input({ prefix, postfix, placeHolder, onChange, width }: Props) {
     inputRef?.current?.focus();
   }
   return (
-    <div className={`flex items-center gap-2 rounded-lg border-2 bg-gray-600 p-2 text-slate-100 ${widthClass(width)}`} onClick={handleClickWrapper}>
+    <div className={`flex w-full items-center gap-2 rounded-lg border-2 bg-gray-600 p-2 text-slate-100`} onClick={handleClickWrapper}>
       {prefix}
-      <input className="w-full border-none bg-transparent" ref={inputRef} placeholder={placeHolder} onChange={onChange} />
+      <input className="w-full border-none bg-transparent outline-none" ref={inputRef} placeholder={placeHolder} onChange={onChange} />
       {postfix}
     </div>
   );

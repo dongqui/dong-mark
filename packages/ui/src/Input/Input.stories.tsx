@@ -9,4 +9,4 @@ export default {
 export const Basic = () => <Input />;
 export const Prefix = () => <Input prefix={<SearchIcon />} />;
 export const Postfix = () => <Input postfix="postfix" />;
-export const Width = () => <Input width={80} />;
+export const Width = () => <Input />;

@@ -1,12 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Input } from 'ui';
-import ui from 'ui';
+import { Input, FolderIcon } from 'ui';
 
 const Home: NextPage = () => {
-  console.log(ui);
-  console.log(Input);
   return (
     <>
       <Head>
@@ -20,9 +17,23 @@ const Home: NextPage = () => {
             <span>dongqui9</span>
           </header>
           <ul>
-            <Input />
-            <li className="px-3">모든 북마크</li>
+            <li className="flex cursor-pointer items-center justify-between px-4 py-1 hover:bg-neutral-800">
+              <div className="flex items-center justify-between">
+                <FolderIcon />
+                <span className="ml-2">모든 북마크</span>
+              </div>
+              <span className="mr-2 text-zinc-500">3</span>
+            </li>
+
+            <li className="flex cursor-pointer items-center justify-between px-4 py-1 hover:bg-neutral-800">
+              <div className="flex items-center justify-between">
+                <FolderIcon />
+                <span className="ml-2">미분류</span>
+              </div>
+              <span className="mr-2 text-zinc-500">3</span>
+            </li>
           </ul>
+          <h3 className="px-4 py-3">컬렉션</h3>
         </aside>
         <div className="flex-1 bg-neutral-800"></div>
       </main>

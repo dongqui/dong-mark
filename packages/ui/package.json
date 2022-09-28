@@ -9,7 +9,7 @@
     "lint": "eslint *.ts*",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "dev": "yarn storybook",
+    "dev": "rollup -c -w",
     "build": "rollup -c"
   },
   "devDependencies": {

@@ -15,7 +15,7 @@ function Input({ prefix, postfix, placeHolder, onChange, width }: Props) {
     inputRef?.current?.focus();
   }
   return (
-    <div className={`flex w-full items-center gap-2 rounded-lg border-2 bg-gray-600 p-2 text-slate-100`} onClick={handleClickWrapper}>
+    <div className={`flex w-full items-center gap-2 rounded-lg bg-zinc-900 p-2 text-slate-100`} onClick={handleClickWrapper}>
       {prefix}
       <input className="w-full border-none bg-transparent outline-none" ref={inputRef} placeholder={placeHolder} onChange={onChange} />
       {postfix}

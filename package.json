@@ -17,7 +17,6 @@
     "eslint-config-custom": "*",
     "postcss": "^8.4.14",
     "prettier": "latest",
-    "tailwindcss": "^3.1.7",
     "turbo": "latest"
   },
   "engines": {

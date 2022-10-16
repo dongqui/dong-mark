@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 
 import { Input } from 'ui';
 
-import './style.scss';
-
 function Popup() {
   const [res, setRes] = useState('');
 

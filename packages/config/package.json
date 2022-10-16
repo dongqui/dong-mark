@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "main": "index.js",
   "files": [
-    "postcss.config.js",
-    "tailwindcss.config.js"
+    "postcss.config.js"
   ]
 }

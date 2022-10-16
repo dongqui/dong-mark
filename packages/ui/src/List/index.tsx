@@ -1,22 +1,48 @@
 import { PropsWithChildren, ReactNode } from 'react';
+import { css } from '@emotion/react';
 
 interface Props {
   className?: string;
 }
 
-function List({ className, children }: PropsWithChildren<Props>) {
-  return <ul className={className}>{children}</ul>;
-}
+const List = ({ className, children }: PropsWithChildren<Props>) => {
+  return (
+    <ul
+      className={className}
+      css={css`
+        padding: 0 24px;
+        display: flex;
+        flex-direction: column;
+        > li:not(:first-of-type) {
+          margin-top: 15px;
+        }
+      `}
+    >
+      {children}
+    </ul>
+  );
+};
 
-interface ListRowProps {
+interface RowProps {
   className?: string;
   left: ReactNode;
   right: ReactNode;
 }
 
-function Row({ className, left, right }: ListRowProps) {
+function Row({ className, left, right }: RowProps) {
   return (
-    <li className={`${className} flex cursor-pointer items-center justify-between hover:bg-neutral-800`}>
+    <li
+      className={className}
+      css={css`
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        :hover {
+          background-color: red;
+        }
+      `}
+    >
       {left}
       {right}
     </li>

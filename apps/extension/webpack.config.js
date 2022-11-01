@@ -2,6 +2,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -49,6 +50,9 @@ module.exports = {
       title: 'Dong markyar',
       filename: 'popup.html',
       chunks: ['popup'],
+    }),
+    new webpack.DefinePlugin({
+      process: {env: {}}
     }),
   ],
   resolve: {

@@ -1,14 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
 
-import { Input } from 'ui';
+import { TextInput } from 'ui';
+
+import type { MetaInfo } from '../types';
 
 function Popup() {
-  const [res, setRes] = useState('');
+  const [res, setRes] = useState<MetaInfo>();
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       if (typeof tabs[0].id === 'number') {
-        chrome.tabs.sendMessage(tabs[0].id, { greeting: 'hello' }, (value: string) => {
+        chrome.tabs.sendMessage(tabs[0].id, { greeting: 'hello' }, (value: MetaInfo) => {
           setRes(value);
         });
       }
@@ -18,9 +21,15 @@ function Popup() {
   return (
     <div>
       <h1 className="text-green-500">hello</h1>
-      <p>{res}</p>
-      <Input />
-      hi
+      <p>{res?.url}</p>
+      <p>{res?.title}</p>
+      <p>{res?.description}</p>
+      <img src={res?.image} />
+
+      <TextInput />
+      <TextInput />
+      <TextInput />
+      <TextInput />
     </div>
   );
 }

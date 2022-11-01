@@ -18,9 +18,13 @@ export function SearchIcon() {
   );
 }
 
-export function UserIcon() {
+interface UserIconProps {
+  height?: number;
+  width?: number;
+}
+export function UserIcon({ height = 40, width = 40 }: UserIconProps) {
   return (
-    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.009 512.009" xmlSpace="preserve" height={30} width={30}>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.009 512.009" xmlSpace="preserve" height={height} width={width}>
       <circle fill="#F7B239" cx="256.004" cy="256.004" r="256.004" />
       <path
         fill="#E09B2D"

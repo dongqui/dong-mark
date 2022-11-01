@@ -9,7 +9,7 @@ interface Props {
   bottomProps?: ComponentProps<typeof Text>;
 }
 
-function TextColumn({ top, topProps, bottom, bottomProps }: Props) {
+function TextStack({ top, topProps, bottom, bottomProps }: Props) {
   return (
     <div css={{ display: 'flex', flexDirection: 'column' }}>
       <Text {...topProps}>{top}</Text>
@@ -18,4 +18,4 @@ function TextColumn({ top, topProps, bottom, bottomProps }: Props) {
   );
 }
 
-export default TextColumn;
+export default TextStack;

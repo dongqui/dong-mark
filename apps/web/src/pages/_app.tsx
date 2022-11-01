@@ -1,13 +1,20 @@
 import type { AppProps } from 'next/app';
+import { css } from '@emotion/react';
+import { colors } from 'ui';
 
-import { Layout } from 'containers';
-import 'styles/globals.css';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
+    <div
+      css={css`
+        background-color: ${colors.darkBG};
+        color: ${colors.contentBase};
+        height: 100vh;
+      `}
+    >
       <Component {...pageProps} />
-    </Layout>
+    </div>
   );
 }
 

@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         use: 'ts-loader',
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
       },
       {
@@ -52,7 +52,7 @@ module.exports = {
       chunks: ['popup'],
     }),
     new webpack.DefinePlugin({
-      process: {env: {}}
+      process: { env: {} },
     }),
   ],
   resolve: {

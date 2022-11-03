@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import type { MetaInfo } from 'common-types';
+import type { BookMark } from 'common-types';
 
-export async function postBookmarks(data: MetaInfo) {
-  const res = await axios.post<MetaInfo>('http://localhost:3000/api/bookmarks', data);
+export async function postBookmarks(data: BookMark) {
+  const res = await axios.post<BookMark>('http://localhost:3000/api/bookmarks', data);
   return res.data;
 }

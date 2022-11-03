@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 
-import type { MetaInfo } from '../types';
+import type { BookMark } from 'common-types';
 import { postBookmarks } from '../api';
 import { PopupLayout } from '../components';
 
 import { TextInput, Button, Form } from 'ui';
 
 function Popup() {
-  const [metaInfo, setMetaInfo] = useState<MetaInfo | null>(null);
+  const [metaInfo, setMetaInfo] = useState<BookMark | null>(null);
   const [postLoading, setPostLoading] = useState(false);
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       if (typeof tabs[0].id === 'number') {
-        chrome.tabs.sendMessage(tabs[0].id, {}, (value: MetaInfo) => {
+        chrome.tabs.sendMessage(tabs[0].id, {}, (value: BookMark) => {
           setMetaInfo(value);
         });
       }
@@ -41,6 +41,8 @@ function Popup() {
       setMetaInfo({
         ...metaInfo,
         [e.target.name]: e.target.value || '',
+        tags: [],
+        parentId: null,
       });
     }
   }

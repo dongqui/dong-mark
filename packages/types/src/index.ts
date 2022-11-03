@@ -3,4 +3,6 @@ export interface MetaInfo {
   image: string;
   description: string;
   url: string;
+  parentId: string | null;
+  tags: string[];
 }

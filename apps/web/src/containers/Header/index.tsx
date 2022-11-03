@@ -24,7 +24,7 @@ export default function Header() {
           padding: 30px;
         `}
       >
-        <TextInput prefix={SearchIcon()} placeHolder="검색" />
+        <TextInput prefix={SearchIcon()} placeholder="검색" />
       </div>
     </header>
   );

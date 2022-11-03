@@ -1,11 +1,8 @@
 import { TextInput, UserIcon, Button, Spacing, Form, CentralBox } from 'ui';
-import { useForm } from 'react-hooks';
 
 import { CentralLayout } from 'containers';
 
 export default function SignUpPage() {
-  const { register, errors, handleSubmit } = useForm();
-
   const handleSubmitCallback = () => {};
   return (
     <CentralLayout>
@@ -13,10 +10,10 @@ export default function SignUpPage() {
         <UserIcon width={150} height={150} />
       </CentralBox>
 
-      <Form onSubmit={handleSubmit(handleSubmitCallback)}>
-        <TextInput placeHolder="이메일 주소" {...register('email', {})} />
-        <TextInput placeHolder="비밀번호" {...register('password', {})} />
-        <TextInput placeHolder="비밀번호 확인" {...register('confirmPassword', {})} />
+      <Form>
+        <TextInput placeholder="이메일 주소" />
+        <TextInput placeholder="비밀번호" />
+        <TextInput placeholder="비밀번호 확인" />
 
         <Button type="submit">Sign up</Button>
       </Form>

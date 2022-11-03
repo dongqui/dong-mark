@@ -1,17 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import type { MetaInfo } from '../types';
 import { postBookmarks } from '../api';
 import { PopupLayout } from '../components';
 
 import { TextInput, Button, Form } from 'ui';
-import { useForm } from 'react-hooks';
 
 function Popup() {
   const [metaInfo, setMetaInfo] = useState<MetaInfo | null>(null);
   const [postLoading, setPostLoading] = useState(false);
-  const { register, handleSubmit } = useForm();
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -23,10 +21,13 @@ function Popup() {
     });
   }, []);
 
-  async function handleSubmitCallback(values: Omit<MetaInfo, 'image'>) {
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!metaInfo) return;
+
     setPostLoading(true);
     try {
-      await postBookmarks({ ...values, image: metaInfo?.image || '' });
+      await postBookmarks(metaInfo);
       window.close();
     } catch (e) {
       alert(e);
@@ -35,15 +36,24 @@ function Popup() {
     }
   }
 
+  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
+    if (metaInfo && e.target.name in metaInfo) {
+      setMetaInfo({
+        ...metaInfo,
+        [e.target.name]: e.target.value || '',
+      });
+    }
+  }
+
   return (
     <PopupLayout>
       {metaInfo ? (
         <>
           <img width={50} height={50} src={metaInfo.image} alt="page image" />
-          <Form onSubmit={handleSubmit(handleSubmitCallback)}>
-            <TextInput value={metaInfo.title} {...register('title', {})} />
-            <TextInput value={metaInfo.description} {...register('description', {})} />
-            <TextInput value={metaInfo.url} {...register('url', {})} />
+          <Form onSubmit={handleSubmit}>
+            <TextInput name="title" value={metaInfo.title} onChange={handleChangeInput} />
+            <TextInput name="description" value={metaInfo.description} onChange={handleChangeInput} />
+            <TextInput name="url" value={metaInfo.url} onChange={handleChangeInput} />
             <Button type="submit" disabled={postLoading}>
               추가
             </Button>

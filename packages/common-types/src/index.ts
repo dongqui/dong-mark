@@ -15,6 +15,7 @@ export interface Collection {
   id: string;
   name: string;
   parentId: string | null;
+  childrenCount: number;
   order: number;
   createdAt: Date;
   updatedAt: Date;

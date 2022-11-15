@@ -1,11 +1,10 @@
 import { List } from 'ui';
 
+import CollectionList from './CollectionList';
 import { usePostCollectionsMutaion, useCollectionsQuery } from 'hooks';
 
-import CollectionList from './CollectionList';
-
 export default function Collection() {
-  // const { data } = useCollectionsQuery();
+  const { data: collections } = useCollectionsQuery();
   const { mutate } = usePostCollectionsMutaion();
 
   function handleClickAdd() {
@@ -16,17 +15,8 @@ export default function Collection() {
     <List>
       <button onClick={handleClickAdd}>add</button>
       <List.Header>Collections</List.Header>
-      {[1, 2, 3].map((d) => (
-        <List.LinkRow
-          key={d}
-          left={'hey'}
-          right={'hi'}
-          href="/hi"
-          draggable
-          onDrop={() => {
-            console.log('dd');
-          }}
-        />
+      {collections?.map((collection) => (
+        <CollectionList key={collection.id} collection={collection} />
       ))}
     </List>
   );

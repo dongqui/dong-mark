@@ -1,4 +1,5 @@
-import { useMutation } from 'react-query';
+import { collection } from 'lib/firebase';
+import { useMutation, useQueryClient } from 'react-query';
 
 import { Collection } from 'common-types';
 
@@ -9,5 +10,10 @@ interface Params {
 }
 
 export default function useCollectionsMutaion() {
-  return useMutation<Collection, Error, Params>('collections', ({ name }) => postCollections({ name, parentId: null }));
+  const queryClient = useQueryClient();
+  return useMutation<Collection, Error, Params>('collections', ({ name }) => postCollections({ name, parentId: null }), {
+    onSuccess() {
+      queryClient.invalidateQueries('collections');
+    },
+  });
 }

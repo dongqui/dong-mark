@@ -1,4 +1,4 @@
-export interface BookMark {
+export interface Bookmark {
   id: string;
   title: string;
   image: string;

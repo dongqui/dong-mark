@@ -1,5 +1,7 @@
 import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { GlobalLayout } from 'containers';
 
@@ -10,9 +12,12 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <GlobalLayout>
-        <Component {...pageProps} />
-      </GlobalLayout>
+      <ReactQueryDevtools initialIsOpen />
+      <RecoilRoot>
+        <GlobalLayout>
+          <Component {...pageProps} />
+        </GlobalLayout>
+      </RecoilRoot>
     </QueryClientProvider>
   );
 }

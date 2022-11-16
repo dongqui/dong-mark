@@ -11,11 +11,13 @@ export default function Collection() {
     mutate({ name: 'test' });
   }
 
+  const rootCollections = collections?.filter((c) => !c.parentId);
+
   return (
     <List>
       <button onClick={handleClickAdd}>add</button>
       <List.Header>Collections</List.Header>
-      {collections?.map((collection) => (
+      {rootCollections?.map((collection) => (
         <CollectionList key={collection.id} collection={collection} />
       ))}
     </List>

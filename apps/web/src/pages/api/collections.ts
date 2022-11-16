@@ -16,7 +16,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const querySnapshot = await getDocs(collection(db, 'collections'));
     const collections = querySnapshot.docs.map((doc) => {
       const data = doc.data();
-      return { ...data, createdAt: data.createdAt.toDate(), updatedAt: data.updatedAt.toDate(), id: doc.id };
+      return {
+        ...data,
+        createdAt: data.createdAt.toDate(),
+        updatedAt: data.updatedAt.toDate(),
+        id: doc.id,
+        childrenIds: querySnapshot.docs.filter((childDoc) => childDoc.data().parentId === doc.id).map((doc) => doc.id),
+      };
     });
 
     res.status(200).json(collections);
@@ -28,5 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     updateDoc(doc(collectionsRef, id), {
       ...req.body,
     });
+
+    res.status(202).json({});
   }
 }

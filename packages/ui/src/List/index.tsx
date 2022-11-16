@@ -46,7 +46,7 @@ function Header({ className, children }: HeaderProps) {
   );
 }
 
-interface LinkRowProps extends Pick<LiHTMLAttributes<HTMLLIElement>, 'draggable' | 'onDrop' | 'onDrag' | 'onDragEnd' | 'onDragOver'> {
+interface LinkRowProps extends Pick<LiHTMLAttributes<HTMLLIElement>, 'draggable' | 'onDrop' | 'onDragStart' | 'onDragEnd' | 'onDragOver' | 'onClick'> {
   className?: string;
   left?: ReactNode;
   right?: ReactNode;

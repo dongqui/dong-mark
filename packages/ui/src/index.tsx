@@ -8,6 +8,7 @@ export { default as TextStack } from './Text/TextStack';
 export { default as Text } from './Text/Text';
 export { default as Form } from './Form';
 export { default as CentralBox } from './CentralBox';
+export { default as Maybe } from './Maybe';
 
 export * from './Icon/index';
 export * from './constants';

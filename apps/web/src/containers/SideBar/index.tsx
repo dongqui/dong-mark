@@ -1,8 +1,9 @@
 import { FolderIcon } from 'ui';
-import Link from 'next/link';
 import { css } from '@emotion/react';
 
-import { colors, List } from 'ui';
+import { colors } from 'ui';
+
+import { Collection } from 'containers';
 
 export default function SideBar() {
   return (
@@ -13,12 +14,7 @@ export default function SideBar() {
       `}
     >
       <nav>
-        <List>
-          <List.LinkRow left={'hey'} right={'hi'} href="/hi" />
-        </List>
-        <List>
-          <List.Header>Collections</List.Header>
-        </List>
+        <Collection />
       </nav>
     </aside>
   );

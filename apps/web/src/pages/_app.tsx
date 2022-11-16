@@ -1,20 +1,24 @@
 import type { AppProps } from 'next/app';
-import { css } from '@emotion/react';
-import { colors } from 'ui';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
+import { GlobalLayout } from 'containers';
 
 import '../styles/globals.css';
 
+const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div
-      css={css`
-        background-color: ${colors.darkBG};
-        color: ${colors.contentBase};
-        height: 100vh;
-      `}
-    >
-      <Component {...pageProps} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen />
+      <RecoilRoot>
+        <GlobalLayout>
+          <Component {...pageProps} />
+        </GlobalLayout>
+      </RecoilRoot>
+    </QueryClientProvider>
   );
 }
 

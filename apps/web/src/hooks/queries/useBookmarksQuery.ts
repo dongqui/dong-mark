@@ -3,5 +3,5 @@ import { useQuery } from 'react-query';
 import { getBookmarks } from 'api';
 
 export default function useBookmarksQuery() {
-  return useQuery(['bookmakrs'], () => getBookmarks());
+  return useQuery(['bookmarks'], () => getBookmarks());
 }

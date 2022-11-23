@@ -1,8 +1,9 @@
 import { useState } from 'react';
 
-import { List, Maybe } from 'ui';
+import { List, Maybe, RowBox } from 'ui';
 import { Collection } from 'common-types';
 import { isDefined } from 'common-helpers';
+import Link from 'next/link';
 
 import { usePutCollectionsMutaion, useDraggedCollectionId, useCollectionsQuery } from 'hooks';
 interface Props {
@@ -37,17 +38,13 @@ export default function CollectionList({ collection }: Props) {
 
   return (
     <>
-      <List.LinkRow
-        key={collection.id}
-        left={'hey'}
-        right={collection.name}
-        href="/"
-        draggable
-        onDrop={handleDrop}
-        onClick={handleClickFolder}
-        onDragStart={handleDrag}
-        onDragEnd={handeDragEnd}
-      />
+      <List.Row key={collection.id} draggable onDrop={handleDrop} onClick={handleClickFolder} onDragStart={handleDrag} onDragEnd={handeDragEnd}>
+        <Link href={`/collections/${collection.id}`}>
+          <a>
+            <RowBox left={collection.id} right={'hey'} />
+          </a>
+        </Link>
+      </List.Row>
 
       <Maybe test={isExpanded}>
         {children?.map((child) => (

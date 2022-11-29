@@ -1,24 +1,28 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { useBookmarksQuery } from 'hooks';
+import { List } from 'ui';
 
+import { useBookmarksQuery, useSelectedCollectionId } from 'hooks';
 import { BookmarkCard } from 'components';
 
 function BookmarkList() {
-  const { data: bookmarks } = useBookmarksQuery();
+  const router = useRouter();
+  const [selectedCollectionId, _] = useSelectedCollectionId();
+  const { data: bookmarks } = useBookmarksQuery(selectedCollectionId);
 
   return (
-    <ul>
+    <List>
       {bookmarks?.map((bookmark) => (
-        <li key={bookmark.id}>
-          <Link href={`${location.pathname}/bookmarks/${bookmark.id}`}>
+        <List.Row key={bookmark.id}>
+          <Link href={`${router.asPath}/bookmarks/${bookmark.id}`}>
             <a>
               <BookmarkCard bookmark={bookmark} />
             </a>
           </Link>
-        </li>
+        </List.Row>
       ))}
-    </ul>
+    </List>
   );
 }
 

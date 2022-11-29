@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { css } from '@emotion/react';
 
 import { List, Maybe, RowBox } from 'ui';
 import { Collection } from 'common-types';
@@ -11,10 +12,10 @@ interface Props {
 }
 
 export default function CollectionList({ collection }: Props) {
-  const { data: collections } = useCollectionsQuery();
   const [isExpanded, setIsExpanded] = useState(false);
-  const { mutate } = usePutCollectionsMutaion();
   const [draggedCollectionId, setDraggedCollectionId] = useDraggedCollectionId();
+  const { data: collections } = useCollectionsQuery();
+  const { mutate } = usePutCollectionsMutaion();
 
   const handleClickFolder = () => {
     setIsExpanded(!isExpanded);
@@ -40,8 +41,15 @@ export default function CollectionList({ collection }: Props) {
     <>
       <List.Row key={collection.id} draggable onDrop={handleDrop} onClick={handleClickFolder} onDragStart={handleDrag} onDragEnd={handeDragEnd}>
         <Link href={`/collections/${collection.id}`}>
-          <a>
-            <RowBox left={collection.id} right={'hey'} />
+          <a
+            css={css`
+              display: block;
+              width: 100%;
+              height: 100%;
+              padding: 15px 24px;
+            `}
+          >
+            <RowBox left={collection.name} right={'hey'} />
           </a>
         </Link>
       </List.Row>

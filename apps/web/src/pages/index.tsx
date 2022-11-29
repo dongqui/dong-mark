@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import { ToolLayout } from 'components';
+import { BookMarkList } from 'containers';
 
 const Home: NextPage = () => {
   return (
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ToolLayout>
-        <div></div>
+        <BookMarkList />
       </ToolLayout>
     </>
   );

@@ -56,7 +56,6 @@ function Row({ children, className, ...rest }: PropsWithChildren<RowProps>) {
       className={className}
       css={css`
         cursor: pointer;
-        padding: 15px 24px;
         :hover {
           background-color: red;
         }

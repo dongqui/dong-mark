@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 
-import type { BookMark } from 'common-types';
+import type { Bookmark } from 'common-types';
 import { postBookmarks } from '../api';
 import { PopupLayout } from '../components';
 
 import { TextInput, Button, Form } from 'ui';
 
 function Popup() {
-  const [metaInfo, setMetaInfo] = useState<BookMark | null>(null);
+  const [metaInfo, setMetaInfo] = useState<Bookmark | null>(null);
   const [postLoading, setPostLoading] = useState(false);
 
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       if (typeof tabs[0].id === 'number') {
-        chrome.tabs.sendMessage(tabs[0].id, {}, (value: BookMark) => {
+        chrome.tabs.sendMessage(tabs[0].id, {}, (value: Bookmark) => {
           setMetaInfo(value);
         });
       }

@@ -1,8 +1,8 @@
 import { atom, useRecoilState } from 'recoil';
 
-const _atom = atom<null | string>({
+const _atom = atom<string>({
   key: `selectedCollectionId/${new Date().toString()}`,
-  default: null,
+  default: '',
 });
 
 function useSelectedCollectionId() {

@@ -4,3 +4,4 @@ export { default as usePutCollectionsMutaion } from './queries/usePutCollections
 export { default as useBookmarksQuery } from './queries/useBookmarksQuery';
 
 export { default as useDraggedCollectionId } from './recoils/useDraggedCollectionId';
+export { default as useSelectedCollectionId } from './recoils/useSelectedCollectionId';

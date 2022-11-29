@@ -6,10 +6,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint *.ts*",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "dev": "rollup -c -w",
-    "build": "rollup -c"
+    "dev": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",

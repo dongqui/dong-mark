@@ -1,6 +1,6 @@
 import { TextInput, UserIcon, Button, Spacing, Form, CentralBox } from 'ui';
 
-import { CentralLayout } from 'containers';
+import { CentralLayout } from 'components';
 
 export default function SignUpPage() {
   const handleSubmitCallback = () => {};

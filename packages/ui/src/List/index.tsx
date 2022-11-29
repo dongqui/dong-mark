@@ -1,6 +1,5 @@
 import { LiHTMLAttributes, PropsWithChildren, ReactNode } from 'react';
 import { css } from '@emotion/react';
-import Link from 'next/link';
 
 import Text from '../Text/Text';
 interface Props {
@@ -46,20 +45,17 @@ function Header({ className, children }: HeaderProps) {
   );
 }
 
-interface LinkRowProps extends Pick<LiHTMLAttributes<HTMLLIElement>, 'draggable' | 'onDrop' | 'onDragStart' | 'onDragEnd' | 'onDragOver' | 'onClick'> {
+interface RowProps extends Pick<LiHTMLAttributes<HTMLLIElement>, 'draggable' | 'onDrop' | 'onDragStart' | 'onDragEnd' | 'onDragOver' | 'onClick'> {
   className?: string;
-  left?: ReactNode;
-  right?: ReactNode;
-  href: string;
+  isLink?: boolean;
 }
 
-function LinkRow({ className, left, right, href, ...rest }: LinkRowProps) {
+function Row({ children, className, ...rest }: PropsWithChildren<RowProps>) {
   return (
     <li
       className={className}
       css={css`
         cursor: pointer;
-        padding: 15px 24px;
         :hover {
           background-color: red;
         }
@@ -67,24 +63,12 @@ function LinkRow({ className, left, right, href, ...rest }: LinkRowProps) {
       onDragOver={(e) => e.preventDefault()}
       {...rest}
     >
-      <Link href={href}>
-        <a
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-          `}
-        >
-          <div>{left}</div>
-          <div>{right}</div>
-        </a>
-      </Link>
+      {children}
     </li>
   );
 }
 
-List.LinkRow = LinkRow;
+List.Row = Row;
 List.Header = Header;
 
 export default List;

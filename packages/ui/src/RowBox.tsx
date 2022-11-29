@@ -14,10 +14,11 @@ function RowBox({ left, right, gap = 0 }: PropsWithChildren<Props>) {
         display: flex;
         gap: ${gap}px;
         align-items: center;
+        justify-content: space-between;
       `}
     >
-      {left}
-      {right}
+      <div>{left}</div>
+      <div>{right}</div>
     </div>
   );
 }

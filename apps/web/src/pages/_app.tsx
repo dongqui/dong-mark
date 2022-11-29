@@ -3,20 +3,21 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { AppPropsWithLayout } from 'types';
 import { GlobalLayout } from 'components';
 
 import '../styles/globals.css';
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen />
       <RecoilRoot>
-        <GlobalLayout>
-          <Component {...pageProps} />
-        </GlobalLayout>
+        <GlobalLayout>{getLayout(<Component {...pageProps} />)}</GlobalLayout>
       </RecoilRoot>
     </QueryClientProvider>
   );

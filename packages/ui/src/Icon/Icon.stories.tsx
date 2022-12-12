@@ -1,6 +1,6 @@
 // Button.stories.js|jsx
 
-import { FolderIcon, SearchIcon } from './index';
+import { FolderIcon, SearchIcon, UserIcon } from './index';
 
 export default {
   title: 'Icon',
@@ -11,5 +11,6 @@ export const All = () => (
   <div style={{ display: 'flex', gap: '10px' }}>
     <SearchIcon />
     <FolderIcon />
+    <UserIcon />
   </div>
 );

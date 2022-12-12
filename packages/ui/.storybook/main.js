@@ -1,7 +1,8 @@
 const path = require('path');
-const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 
+const toPath = _path => path.join(process.cwd(), _path);
+console.log(toPath('../../node_modules/@emotion/react'))
 module.exports = {
   stories: [
     "../src/**/*.stories.mdx",
@@ -27,15 +28,30 @@ module.exports = {
           options: {
             postcssOptions: {
               ident: 'postcss',
-              plugins: [tailwindcss, autoprefixer],
+              plugins: [autoprefixer],
             },
           },
         },
         'sass-loader',
       ],        
     });
+    
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      loader: require.resolve('babel-loader'),
+      options: {
+        presets: [
+          ['react-app', { flow: false, typescript: true }],
+          require.resolve('@emotion/babel-preset-css-prop'),
+        ],
+      },
+    });
 
     config.resolve.modules.push(path.resolve(__dirname, '../src'));
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@emotion/react': toPath('../../node_modules/@emotion/react'),
+    }
     return config;
   },
 }

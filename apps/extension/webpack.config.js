@@ -1,8 +1,8 @@
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
-const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         use: 'ts-loader',
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
       },
       {
@@ -27,7 +27,7 @@ module.exports = {
             options: {
               postcssOptions: {
                 ident: 'postcss',
-                plugins: [tailwindcss, autoprefixer],
+                plugins: [autoprefixer],
               },
             },
           },
@@ -50,6 +50,9 @@ module.exports = {
       title: 'Dong markyar',
       filename: 'popup.html',
       chunks: ['popup'],
+    }),
+    new webpack.DefinePlugin({
+      process: { env: {} },
     }),
   ],
   resolve: {

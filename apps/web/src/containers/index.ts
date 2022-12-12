@@ -1,3 +1,4 @@
 export { default as SideBar } from './SideBar';
-export { default as Layout } from './Layout';
-export { default as Content } from './Content';
+export { default as Header } from './Header';
+export { default as Collection } from './Collection';
+export { default as BookMarkList } from './BookmarkList';

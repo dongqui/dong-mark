@@ -11,8 +11,9 @@
     "next": "12.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ui": "*",
-    "react-hooks": "*"
+    "react-hooks": "*",
+    "recoil": "^0.7.6",
+    "ui": "*"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.193",
@@ -20,6 +21,7 @@
     "@types/react-dom": "18.0.6",
     "autoprefixer": "^10.4.8",
     "clean-webpack-plugin": "^4.0.0",
+    "common-types": "*",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "eslint": "8.19.0",
@@ -33,10 +35,10 @@
     "style-loader": "^3.3.1",
     "ts-loader": "^9.3.0",
     "tsconfig": "*",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "typescript": "4.7.4",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
-    "webpack-merge": "^5.8.0",
-    "common-types": "*"
+    "webpack-merge": "^5.8.0"
   }
 }

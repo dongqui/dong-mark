@@ -6,30 +6,20 @@ import type { Bookmark } from 'common-types';
 
 import { postBookmarks } from '../api';
 import { PopupLayout } from '../components';
-import { usePageAtom } from '../hooks';
+import { usePageAtom, useBookmarkFormDataAtom } from '../hooks';
 
 function FormPage() {
-  const [metaInfo, setMetaInfo] = useState<Bookmark | null>(null);
+  const [bookmarkFormData, setBookmarkFormData] = useBookmarkFormDataAtom();
   const [postLoading, setPostLoading] = useState(false);
   const [_, setPage] = usePageAtom();
 
-  useEffect(() => {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      if (typeof tabs[0].id === 'number') {
-        chrome.tabs.sendMessage(tabs[0].id, {}, (value: Bookmark) => {
-          setMetaInfo(value);
-        });
-      }
-    });
-  }, []);
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!metaInfo) return;
+    if (!bookmarkFormData) return;
 
     setPostLoading(true);
     try {
-      await postBookmarks(metaInfo);
+      await postBookmarks(bookmarkFormData);
       window.close();
     } catch (e) {
       alert(e);
@@ -39,12 +29,10 @@ function FormPage() {
   }
 
   function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>) {
-    if (metaInfo && e.target.name in metaInfo) {
-      setMetaInfo({
-        ...metaInfo,
+    if (bookmarkFormData && e.target.name in bookmarkFormData) {
+      setBookmarkFormData({
+        ...bookmarkFormData,
         [e.target.name]: e.target.value || '',
-        tags: [],
-        parentId: null,
       });
     }
   }
@@ -52,16 +40,18 @@ function FormPage() {
   function handleClickCollection() {
     setPage('collections');
   }
+
   return (
     <PopupLayout>
-      {metaInfo ? (
+      {bookmarkFormData ? (
         <>
-          <img width={50} height={50} src={metaInfo.image} alt="page image" />
+          <img width={50} height={50} src={bookmarkFormData.image} alt="page image" />
           <Form onSubmit={handleSubmit}>
             컬렉션 <Button onClick={handleClickCollection}>헤이</Button>
-            <TextInput name="title" value={metaInfo.title} onChange={handleChangeInput} />
-            <TextInput name="description" value={metaInfo.description} onChange={handleChangeInput} />
-            <TextInput name="url" value={metaInfo.url} onChange={handleChangeInput} />
+            {bookmarkFormData.collectionName && <div>{bookmarkFormData.collectionName}</div>}
+            <TextInput name="title" value={bookmarkFormData.title} onChange={handleChangeInput} />
+            <TextInput name="description" value={bookmarkFormData.description} onChange={handleChangeInput} />
+            <TextInput name="url" value={bookmarkFormData.url} onChange={handleChangeInput} />
             <Button type="submit" disabled={postLoading}>
               추가
             </Button>

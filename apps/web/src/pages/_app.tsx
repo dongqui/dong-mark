@@ -19,23 +19,10 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen />
       <RecoilRoot>
-        <HandleInitialData />
         <GlobalLayout>{getLayout(<Component {...pageProps} />)}</GlobalLayout>
       </RecoilRoot>
     </QueryClientProvider>
   );
-}
-
-function HandleInitialData() {
-  const router = useRouter();
-  const [_, setSelectedCollectionId] = useSelectedCollectionId();
-
-  useEffect(() => {
-    const collectionId = router.asPath.split('/')[2];
-    setSelectedCollectionId(collectionId);
-  }, [router.asPath, setSelectedCollectionId]);
-
-  return <></>;
 }
 
 export default MyApp;

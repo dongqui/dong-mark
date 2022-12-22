@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { TextInput, Button, Form } from 'ui';
-import type { Bookmark } from 'common-types';
 
 import { postBookmarks } from '../api';
 import { PopupLayout } from '../components';
@@ -19,7 +18,16 @@ function FormPage() {
 
     setPostLoading(true);
     try {
-      await postBookmarks(bookmarkFormData);
+      const { title, description, url, image, parentId, tags } = bookmarkFormData;
+
+      await postBookmarks({
+        title,
+        description,
+        url,
+        image,
+        parentId,
+        tags,
+      });
       window.close();
     } catch (e) {
       alert(e);

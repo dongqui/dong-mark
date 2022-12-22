@@ -17,7 +17,7 @@ export async function getCollections() {
   return res.data;
 }
 
-export async function getBookmarks(collectionId: string) {
-  const res = await axios.get<Bookmark[]>(`http://localhost:3000/api/collections/${collectionId}/bookmarks`);
+export async function getBookmarks(collectionId: string | null) {
+  const res = await axios.get<Bookmark[]>(`http://localhost:3000/api/collections/${collectionId || 'root'}/bookmarks`);
   return res.data;
 }

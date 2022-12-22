@@ -4,8 +4,8 @@ import type { Bookmark, Collection } from 'common-types';
 
 import { BookmarkFormData } from 'types';
 
-export async function postBookmarks(data: BookmarkFormData) {
-  const res = await axios.post<Bookmark>('http://localhost:3000/api/bookmarks', data);
+export async function postBookmarks(data: Omit<BookmarkFormData, 'collectionName'>) {
+  const res = await axios.post<Bookmark>(`http://localhost:3000/api/collections/${data.parentId || 'root'}/bookmarks`, data);
   return res.data;
 }
 

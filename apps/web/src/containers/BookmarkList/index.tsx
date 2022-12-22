@@ -15,7 +15,7 @@ function BookmarkList() {
     <List>
       {bookmarks?.map((bookmark) => (
         <List.Row key={bookmark.id}>
-          <Link href={`${router.asPath}/bookmarks/${bookmark.id}`}>
+          <Link href={`${router.asPath}bookmarks/${bookmark.id}`}>
             <a>
               <BookmarkCard bookmark={bookmark} />
             </a>

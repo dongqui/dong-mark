@@ -6,7 +6,7 @@ import { Collection } from 'common-types';
 import { isDefined } from 'common-helpers';
 import Link from 'next/link';
 
-import { usePutCollectionsMutaion, useDraggedCollectionId, useCollectionsQuery } from 'hooks';
+import { usePutCollectionsMutaion, useDraggedCollectionId, useCollectionsQuery, useSelectCollectionIdFromURL } from 'hooks';
 interface Props {
   collection: Collection;
 }
@@ -16,6 +16,8 @@ export default function CollectionList({ collection }: Props) {
   const [draggedCollectionId, setDraggedCollectionId] = useDraggedCollectionId();
   const { data: collections } = useCollectionsQuery();
   const { mutate } = usePutCollectionsMutaion();
+
+  useSelectCollectionIdFromURL();
 
   const handleClickFolder = () => {
     setIsExpanded(!isExpanded);

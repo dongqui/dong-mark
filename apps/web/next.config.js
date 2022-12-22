@@ -7,6 +7,15 @@ module.exports = withPlugins([withTM], {
   reactStrictMode: true,
   swcMinify: true,
 
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/collections/root',
+        permanent: true,
+      },
+    ];
+  },
   webpack(config, options) {
     const { dev, isServer } = options;
 

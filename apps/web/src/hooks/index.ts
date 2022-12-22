@@ -5,3 +5,5 @@ export { default as useBookmarksQuery } from './queries/useBookmarksQuery';
 
 export { default as useDraggedCollectionId } from './recoils/useDraggedCollectionId';
 export { default as useSelectedCollectionId } from './recoils/useSelectedCollectionId';
+
+export { default as useSelectCollectionIdFromURL } from './useSelectCollectionIdFromURL';

@@ -9,6 +9,7 @@ export default function SideBar() {
   return (
     <aside
       css={css`
+        flex-shrink: 0;
         border-right: 1px solid ${colors.outline};
         width: 300px;
       `}
